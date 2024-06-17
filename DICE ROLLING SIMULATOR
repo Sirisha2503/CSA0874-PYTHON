@@ -1,0 +1,56 @@
+from tkinter import *
+from tkinter import messagebox import random
+global total
+root = Tk()
+root.title('Add The Dice')
+root.geometry("500x500")
+def get_number(x):
+f x == '\u2680':
+return (1)
+elif x == '\u2681':
+return (2)
+elif x == '\u2682':
+return (3)
+elif x == '\u2683':
+return (4)
+elif x == '\u2684':
+return (5)
+elif x == '\u2685':
+return (6)
+roll_dice():
+global total
+d1 = random.choice(my_dice)
+d2 = random.choice(my_dice)
+sd1 = get_number(d1)
+sd2 = get_number(d2)
+dice_label1.config(text=d1)
+dice_label2.config(text=d2)
+total=sd1+sd2
+#print(type(total), type(e1.get()))
+def Submit():
+if int(e1.get()) == total:
+messagebox.showinfo(root, "congratulations, you are correct")
+else:
+messagebox.showinfo(root, "sorry,you are wrong")
+e1.delete(0, END)
+my_dice = ['\u2680', '\u2681', '\u2682', '\u2683', '\u2684', '\u2685', ]
+my_frame = Frame(root)
+my_frame.pack()
+dice_label1 = Label(my_frame, text='', font=("times", 100), fg="blue")
+dice_label1.grid(row=0, column=0, padx=5)
+sub_dice_label1 = Label(my_frame, text="")
+sub_dice_label1.grid(row=1, column=0)
+dice_label2 = Label(my_frame, text='', font=("times", 100), fg="red")
+dice_label2.grid(row=0, column=1, padx=5)
+sub_dice_label2 = Label(my_frame, text="")
+sub_dice_label2.grid(row=1, column=1)
+my_button = Button(root, text="Roll Dice", command=roll_dice, font=("Helvetica", 20),fg="blue",bg="yellow")
+my_button.pack(pady=10)
+ans = Label(root, text="Enter Total Of 2 Dices and press submit",font=("times",15),fg="cyan",bg="black")
+ans.pack() 
+e1 = Entry(root)
+e1.pack()
+submit = Button(root, text="Submit", command=Submit, font=("times", 15))
+submit.pack()
+roll_dice()
+root.mainloop()
